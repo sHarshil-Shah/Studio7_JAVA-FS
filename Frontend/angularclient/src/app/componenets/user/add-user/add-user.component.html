@@ -1,0 +1,20 @@
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+
+    <label>
+        Email:
+        <input type="email" formControlName="email">
+    </label>
+
+    <label>
+        Password:
+        <input type="password" formControlName="pass">
+    </label>
+
+
+    <label>
+        Country:
+        <input type="text" formControlName="country">
+    </label>
+
+    <button type="submit">Add User</button>
+</form>
