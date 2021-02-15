@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
 })
-export class AddUserComponent {
+export class AddComponent {
 
   addUserForm = new FormGroup({
     email: new FormControl(''),
@@ -51,5 +51,6 @@ export class AddUserComponent {
   gotoUserList() {
     this.router.navigate(['/users']);
   }
+
 
 }

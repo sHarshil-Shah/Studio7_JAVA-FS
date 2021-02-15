@@ -3,11 +3,11 @@ import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class ListComponent implements OnInit {
 
   users: User[] | undefined;
 
