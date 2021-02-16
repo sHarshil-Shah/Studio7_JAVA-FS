@@ -19,4 +19,8 @@ export class UserService {
   public save(user: User) {
     return this.http.post<User>(this.usersUrl, user);
   }
+
+  public findByEmail(email: String) {
+    return this.http.get<User>(this.usersUrl + '/email/' + email);
+  }
 }

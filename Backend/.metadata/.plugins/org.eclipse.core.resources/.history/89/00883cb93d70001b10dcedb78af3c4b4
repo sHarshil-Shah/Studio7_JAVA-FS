@@ -42,9 +42,4 @@ public class UserController {
 	void deleteUser(@PathVariable("id") Long id) {
 		userRepository.deleteById(id);
 	}
-
-	@GetMapping("/users/email/{email}")
-	public User getUserByEmail(@PathVariable("email") String email) {
-		return userRepository.findUserByEmail(email).get(0);
-	}
 }

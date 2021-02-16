@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './service/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { UserService } from './service/user.service';
     RouterModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule],
+    HttpClientModule,
+    BrowserAnimationsModule],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
