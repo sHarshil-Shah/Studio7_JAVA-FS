@@ -6,12 +6,20 @@ import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [AddComponent, ListComponent, LoginComponent],
   imports: [
     CommonModule,
     UserRoutingModule, FormsModule, ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule
   ]
 })
 export class UserModule { }

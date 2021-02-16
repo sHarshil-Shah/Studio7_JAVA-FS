@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
+import { GlobalConstants } from 'src/app/service/global';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,9 @@ export class LoginComponent {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
+    console.log(GlobalConstants.isAdmin);
+    GlobalConstants.isAdmin = true;
+    console.log(GlobalConstants.isAdmin);
   }
 
   onSubmit() {
