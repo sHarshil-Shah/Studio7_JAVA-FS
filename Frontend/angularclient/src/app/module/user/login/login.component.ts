@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
-import { GlobalConstants } from 'src/app/service/global';
-
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  hide = true;
 
   loginForm = new FormGroup({
     email: new FormControl(''),
@@ -17,12 +17,9 @@ export class LoginComponent {
   });
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService) {
-    console.log(GlobalConstants.isAdmin);
-    GlobalConstants.isAdmin = true;
-    console.log(GlobalConstants.isAdmin);
+
   }
 
   onSubmit() {
@@ -36,8 +33,10 @@ export class LoginComponent {
       this.userService.findByEmail(email.value).subscribe(result => {
         if (result.pass == pass.value) {
           if (result.admin) {
+            Cookie.set('isAdmin', 'true');
             this.gotoUserList();
           } else {
+            Cookie.set('isAdmin', 'false');
             this.gotoAddUser();
           }
         }
@@ -46,7 +45,7 @@ export class LoginComponent {
 
   }
   gotoUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/users/list']);
   }
 
   gotoAddUser() {

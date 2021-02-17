@@ -6,6 +6,7 @@
 
 <body>
     <h1>Register User</h1>
+    <br />
     <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="outline">
@@ -13,7 +14,7 @@
             <input matInput type="email" formControlName="email">
         </mat-form-field>
 
-
+        <br />
 
         <mat-form-field appearance="outline">
             <mat-label>Enter your password</mat-label>
@@ -24,7 +25,7 @@
             </button>
         </mat-form-field>
 
-
+        <br />
 
 
 
@@ -35,7 +36,10 @@
                     {{contry}}
                 </mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
+        <br />
+
+        <mat-slide-toggle *ngIf="isAdmin" formControlName="admin">Admin</mat-slide-toggle>
 
         <button mat-button type="submit">Add User</button>
 
