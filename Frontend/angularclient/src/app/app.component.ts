@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularclient';
+  isLoggedIn: boolean;
+  constructor() {
+    this.isLoggedIn = false;
+    Cookie.set('isLoggedIn', 'false');
+  }
 }

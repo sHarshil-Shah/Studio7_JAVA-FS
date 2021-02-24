@@ -32,6 +32,7 @@ export class LoginComponent {
       console.log("here");
       this.userService.findByEmail(email.value).subscribe(result => {
         if (result.pass == pass.value) {
+          Cookie.set('isLoggedIn', 'true');
           if (result.admin) {
             Cookie.set('isAdmin', 'true');
             this.gotoUserList();

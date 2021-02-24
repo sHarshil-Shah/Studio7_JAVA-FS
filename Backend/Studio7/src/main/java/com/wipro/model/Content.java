@@ -1,9 +1,7 @@
 package com.wipro.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
+import javax.persistence.*;
 
 @Entity
 public class Content {
@@ -19,6 +17,11 @@ public class Content {
 	private String trailer;
 	private boolean isMovie;
 	private String cast;
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "history")
+	private List<User> histUsers = new ArrayList<>();
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "watchList")
+	private List<User> watchUsers = new ArrayList<>();
 
 	public Content() {
 		super();
@@ -26,7 +29,7 @@ public class Content {
 	}
 
 	public Content(Long id, String name, String discription, String genere, float rating, String language,
-			String trailer, boolean isMovie, String cast) {
+			String trailer, boolean isMovie, String cast, List<User> histUsers, List<User> watchUsers) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,6 +40,8 @@ public class Content {
 		this.trailer = trailer;
 		this.isMovie = isMovie;
 		this.cast = cast;
+		this.histUsers = histUsers;
+		this.watchUsers = watchUsers;
 	}
 
 	public Long getId() {
@@ -111,10 +116,27 @@ public class Content {
 		this.cast = cast;
 	}
 
+	public List<User> getHistUsers() {
+		return histUsers;
+	}
+
+	public void setHistUsers(List<User> histUsers) {
+		this.histUsers = histUsers;
+	}
+
+	public List<User> getWatchUsers() {
+		return watchUsers;
+	}
+
+	public void setWatchUsers(List<User> watchUsers) {
+		this.watchUsers = watchUsers;
+	}
+
 	@Override
 	public String toString() {
 		return "Content [id=" + id + ", name=" + name + ", discription=" + discription + ", genere=" + genere
 				+ ", rating=" + rating + ", language=" + language + ", trailer=" + trailer + ", isMovie=" + isMovie
-				+ ", cast=" + cast + "]";
+				+ ", cast=" + cast + ", histUsers=" + histUsers + ", watchUsers=" + watchUsers + "]";
 	}
+
 }

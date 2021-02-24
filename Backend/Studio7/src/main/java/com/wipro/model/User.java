@@ -1,10 +1,7 @@
 package com.wipro.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -17,31 +14,24 @@ public class User {
 	private String pass;
 	private String country;
 	private boolean isAdmin;
-	private String history;
-	private String WatchList;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "content_id") })
+	private List<Content> history = new ArrayList<>();
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "content_id") })
+	private List<Content> watchList = new ArrayList<>();
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getHistory() {
-		return history;
-	}
-
-	public void setHistory(String history) {
-		this.history = history;
-	}
-
-	public String getWatchList() {
-		return WatchList;
-	}
-
-	public void setWatchList(String watchList) {
-		WatchList = watchList;
-	}
-
-	public User(Long id, String email, String pass, String country, boolean isAdmin, String history, String watchList) {
+	public User(Long id, String email, String pass, String country, boolean isAdmin, List<Content> history,
+			List<Content> watchList) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -49,7 +39,7 @@ public class User {
 		this.country = country;
 		this.isAdmin = isAdmin;
 		this.history = history;
-		WatchList = watchList;
+		this.watchList = watchList;
 	}
 
 	public Long getId() {
@@ -92,10 +82,26 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 
+	public List<Content> getHistory() {
+		return history;
+	}
+
+	public void setHistory(List<Content> history) {
+		this.history = history;
+	}
+
+	public List<Content> getWatchList() {
+		return watchList;
+	}
+
+	public void setWatchList(List<Content> watchList) {
+		this.watchList = watchList;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", pass=" + pass + ", country=" + country + ", isAdmin="
-				+ isAdmin + ", history=" + history + ", WatchList=" + WatchList + "]";
+				+ isAdmin + ", history=" + history + ", watchList=" + watchList + "]";
 	}
 
 }
