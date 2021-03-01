@@ -11,11 +11,12 @@
                     <p>{{ content.discription }}</p>
                     <p>{{ content.rating }}</p>
                     <p>{{ content.language }}</p>
-                    <p><a href="{{ content.trailer }}">{{ content.trailer }}</a></p>
                     <p>{{ content.isMovie }}</p>
                     <p>{{ content.cast }}</p>
                 </mat-card-content>
                 <mat-card-actions>
+                    <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch Trailer</button>
+
                     <!-- <button mat-button>LIKE</button>
                     <button mat-button>SHARE</button> -->
                 </mat-card-actions>

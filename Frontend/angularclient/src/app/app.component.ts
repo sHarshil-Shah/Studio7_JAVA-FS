@@ -8,9 +8,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 })
 export class AppComponent {
   title = 'angularclient';
-  isLoggedIn: boolean;
   constructor() {
-    this.isLoggedIn = false;
-    Cookie.set('isLoggedIn', 'false');
+    
   }
 }
