@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'pages', loadChildren: () => import('./module/pages/pages.module').then(m => m.PagesModule) },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)
+  imports: [RouterModule.forRoot(routes, { initialNavigation: "disabled" })
   ]
 })
 export class AppRoutingModule { }

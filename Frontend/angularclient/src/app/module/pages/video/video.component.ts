@@ -10,7 +10,7 @@ export class VideoComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<VideoComponent>,
-    @Inject(MAT_DIALOG_DATA) public link: string) { console.log(link);}
+    @Inject(MAT_DIALOG_DATA) public link: string) { }
   ngOnInit(): void {
   }
   onNoClick(): void {

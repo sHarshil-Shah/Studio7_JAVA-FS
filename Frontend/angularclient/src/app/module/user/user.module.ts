@@ -11,9 +11,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AccountComponent } from './account/account.component';
+import { Globals } from 'src/app/global';
 
 @NgModule({
-  declarations: [AddComponent, ListComponent, LoginComponent],
+  declarations: [AddComponent, ListComponent, LoginComponent, AccountComponent],
   imports: [
     CommonModule,
     UserRoutingModule, FormsModule, ReactiveFormsModule,
@@ -22,6 +24,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatIconModule,
     MatSelectModule,
     MatSlideToggleModule
-  ]
+  ],
+  providers: [ Globals ],
 })
 export class UserModule { }

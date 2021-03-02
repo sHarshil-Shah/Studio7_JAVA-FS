@@ -11,8 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { ContentService } from './service/content.service';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VgCoreModule, } from '@videogular/ngx-videogular/core';
+import { Globals } from './global';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { VgCoreModule, } from '@videogular/ngx-videogular/core';
     MatListModule,
     VgCoreModule,
   ],
-  providers: [UserService, ContentService],
+  providers: [UserService, ContentService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

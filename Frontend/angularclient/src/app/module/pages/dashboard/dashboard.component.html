@@ -1,27 +1,10 @@
+<html>
+
+<head></head>
+
 <body>
-    <div layout="row">
-        <div *ngFor="let content of contents">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-title>{{content.name}}</mat-card-title>
-                    <mat-card-subtitle>{{content.genere}}</mat-card-subtitle>
-                </mat-card-header>
+    <app-content-list></app-content-list>
 
-                <mat-card-content>
-                    <p>{{ content.discription }}</p>
-                    <p>{{ content.rating }}</p>
-                    <p>{{ content.language }}</p>
-                    <p>{{ content.isMovie }}</p>
-                    <p>{{ content.cast }}</p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch Trailer</button>
-
-                    <!-- <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button> -->
-                </mat-card-actions>
-            </mat-card>
-           
-        </div>
-    </div>
 </body>
+
+</html>

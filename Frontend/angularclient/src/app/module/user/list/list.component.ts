@@ -9,7 +9,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ListComponent implements OnInit {
 
-  users: User[] | undefined;
+  users: User[] = [];
 
   constructor(private userService: UserService) {
   }

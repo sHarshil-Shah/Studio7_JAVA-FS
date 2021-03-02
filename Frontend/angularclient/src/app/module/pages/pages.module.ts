@@ -8,9 +8,12 @@ import { VideoComponent } from './video/video.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { VgCoreModule, } from '@videogular/ngx-videogular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ContentListComponent } from './content-list/content-list.component';
+import { Globals } from 'src/app/global';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, ContentListComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -18,8 +21,10 @@ import { VgCoreModule, } from '@videogular/ngx-videogular/core';
     MatButtonModule,
     MatDialogModule,
     VgCoreModule,
+    FlexLayoutModule,
 
-  ],
+  ], providers: [Globals],
+
   entryComponents: [VideoComponent],
 })
 export class PagesModule { }

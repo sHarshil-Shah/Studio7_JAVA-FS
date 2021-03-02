@@ -4,7 +4,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { Globals } from 'src/app/global';
+import { ToolbarService } from 'src/app/services/toolbar.service';
 
 @Component({
   selector: 'app-add',
@@ -33,10 +34,12 @@ export class AddComponent {
   constructor(fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService,) {
-    this.contries = ["India", "Australia", "USA"];
+    private userService: UserService, public globals: Globals,
+    public navbarService: ToolbarService,
+  ) {
+    this.contries = this.globals.contries;
     this.user = new User();
-    this.isAdmin = Cookie.get('isAdmin') == 'true' ? true : false;
+    this.isAdmin = this.navbarService.isAdmin();
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
@@ -52,7 +55,7 @@ export class AddComponent {
 
 
     if (email && pass && country && admin) {
-      console.log(admin.value);
+      //console.log(admin.value);
 
       this.user.email = email.value;
       this.user.pass = pass.value;

@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { Globals } from 'src/app/global';
+import { ToolbarService } from 'src/app/services/toolbar.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,8 +20,10 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private userService: UserService) {
-
+    private userService: UserService, public globals: Globals,
+    private navbarService: ToolbarService,
+  ) {
+    this.navbarService.updateLoginStatus();
   }
 
   onSubmit() {
@@ -29,18 +33,23 @@ export class LoginComponent {
 
     if (email && pass) {
 
-      console.log("here");
       this.userService.findByEmail(email.value).subscribe(result => {
         if (result.pass == pass.value) {
-          Cookie.set('isLoggedIn', 'true');
+          if (result.country)
+            this.globals.country = result.country;
+          if (result.email)
+            this.globals.email = result.email;
+
           if (result.admin) {
-            Cookie.set('isAdmin', 'true');
+            this.navbarService.updateNavAfterAuth(true);
+
             this.gotoUserList();
           } else {
-            Cookie.set('isAdmin', 'false');
-            this.gotoAddUser();
+            this.navbarService.updateNavAfterAuth(false);
+            this.gotoDashboard();
           }
         }
+
       });
     }
 
@@ -49,7 +58,7 @@ export class LoginComponent {
     this.router.navigate(['/users/list']);
   }
 
-  gotoAddUser() {
-    this.router.navigate(['/users/add']);
+  gotoDashboard() {
+    this.router.navigate(['/pages/dashboard']);
   }
 }

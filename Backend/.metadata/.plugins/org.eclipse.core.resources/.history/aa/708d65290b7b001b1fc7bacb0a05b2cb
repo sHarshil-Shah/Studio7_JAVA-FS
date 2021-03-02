@@ -51,24 +51,6 @@ public class Studio7Application {
 			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
 					new ArrayList<>(), new ArrayList<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "g3", 0, "Hindi", "link3", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
 			contentRepository.findAll().forEach(System.out::println);
 
 		};

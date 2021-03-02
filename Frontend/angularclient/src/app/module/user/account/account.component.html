@@ -1,0 +1,40 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1>My Account</h1>
+    <form [formGroup]="accountForm">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email">
+        </mat-form-field><br />
+        <mat-form-field appearance="outline">
+            <mat-label>Old Password</mat-label>
+            <input formControlName="password" matInput type="password">
+        </mat-form-field><br />
+        <mat-form-field appearance="outline">
+            <mat-label>New Password</mat-label>
+            <input formControlName="newpassword" matInput type="password">
+        </mat-form-field><br />
+        <mat-form-field appearance="outline">
+            <mat-label>Confirm New Password</mat-label>
+            <input formControlName="newpasswordconfirm" matInput type="password">
+        </mat-form-field><br />
+        <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+                <mat-option *ngFor="let contry of contries" [value]="contry">
+                    {{contry}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary" type="submit" [disabled]="!accountForm.valid">Submit</button>
+
+    </form>
+
+</body>
+
+</html>
