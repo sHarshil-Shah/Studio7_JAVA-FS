@@ -20,7 +20,7 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private userService: UserService, public globals: Globals,
+    private userService: UserService,
     private navbarService: ToolbarService,
   ) {
     this.navbarService.updateLoginStatus();
@@ -36,10 +36,10 @@ export class LoginComponent {
       this.userService.findByEmail(email.value).subscribe(result => {
         if (result.pass == pass.value) {
           if (result.country)
-            this.globals.country = result.country;
+            Globals.country = result.country;
           if (result.email)
-            this.globals.email = result.email;
-
+              Globals.email = result.email;
+            console.log("Login:" + Globals.email);
           if (result.admin) {
             this.navbarService.updateNavAfterAuth(true);
 

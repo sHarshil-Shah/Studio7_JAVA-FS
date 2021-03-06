@@ -8,9 +8,9 @@ export class Content {
     rating: Number | undefined;
     language: string | undefined;
     trailer: string | undefined;
-    isMovie: boolean | undefined;
+    movie: boolean | undefined;
     cast: string | undefined;
     histUsers: User[] | undefined;
-    watchUsers: User[] | undefined;;
+    watchUsers: User[] | undefined;
 
 }

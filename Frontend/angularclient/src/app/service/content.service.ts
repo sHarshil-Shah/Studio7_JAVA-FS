@@ -16,7 +16,12 @@ export class ContentService {
     return this.http.get<Content[]>(this.contentsUrl);
   }
 
+  public findById(id: Number): Observable<Content> {
+    return this.http.get<Content>(this.contentsUrl + "/" + id);
+  }
+
   public save(content: Content) {
+    console.log(content);
     return this.http.post<Content>(this.contentsUrl, content);
   }
 }

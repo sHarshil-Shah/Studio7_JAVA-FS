@@ -20,9 +20,12 @@ public class User {
 			@JoinColumn(name = "content_id") })
 	private List<Content> history = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "content_id") })
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+//	@JoinTable(joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+//			@JoinColumn(name = "content_id") })
+	@JoinTable(joinColumns = {
+			@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "content_id", referencedColumnName = "id", nullable = false, updatable = false) })
 	private List<Content> watchList = new ArrayList<>();
 
 	public User() {

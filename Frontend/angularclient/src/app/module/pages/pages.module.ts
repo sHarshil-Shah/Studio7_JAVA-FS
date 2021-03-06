@@ -11,9 +11,10 @@ import { VgCoreModule, } from '@videogular/ngx-videogular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContentListComponent } from './content-list/content-list.component';
 import { Globals } from 'src/app/global';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ContentListComponent],
+  declarations: [DashboardComponent, ContentListComponent, WatchlistComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

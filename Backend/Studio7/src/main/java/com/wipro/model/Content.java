@@ -20,7 +20,7 @@ public class Content {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "history")
 	private List<User> histUsers = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "watchList")
+	@ManyToMany(mappedBy = "watchList", fetch = FetchType.EAGER)
 	private List<User> watchUsers = new ArrayList<>();
 
 	public Content() {

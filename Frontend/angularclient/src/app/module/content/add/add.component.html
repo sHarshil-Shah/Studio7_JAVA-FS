@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet"> -->
+</head>
+
+<body>
+    <h1>Add Content</h1>
+    <br />
+    <form [formGroup]="addContentForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <br />
+        <mat-form-field appearance="outline">
+            <mat-label>Discription</mat-label>
+            <input matInput formControlName="discription">
+        </mat-form-field>
+
+        <br />
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Genere</mat-label>
+            <mat-select formControlName="genere">
+                <mat-option *ngFor="let genere of generes" [value]="genere">
+                    {{genere}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+            <mat-label>Language</mat-label>
+            <mat-select formControlName="language">
+                <mat-option *ngFor="let language of languages" [value]="language">
+                    {{language}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+            <mat-label>Trailer</mat-label>
+            <input matInput formControlName="trailer">
+        </mat-form-field>
+
+        <br />
+        Series<mat-slide-toggle formControlName="movie">Movie</mat-slide-toggle>
+        <br />
+        <mat-form-field appearance="outline">
+            <mat-label>Cast (, seperated Values)</mat-label>
+            <input matInput formControlName="cast">
+        </mat-form-field>
+
+        <br />
+        <button mat-button type="submit">Add Content</button>
+
+    </form>
+</body>
+
+</html>

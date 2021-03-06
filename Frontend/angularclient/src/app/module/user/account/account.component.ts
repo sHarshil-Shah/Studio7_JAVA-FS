@@ -16,15 +16,15 @@ export class AccountComponent implements OnInit {
     newpasswordconfirm: new FormControl(''),
     country: new FormControl(''),
   });
-  constructor(public globals: Globals) { this.contries = this.globals.contries; }
+  constructor() { this.contries = Globals.contries; }
 
   ngOnInit(): void {
 
-    console.log("Email: " + this.globals.email);
+    console.log("Email: " + Globals.email);
 
     this.accountForm.patchValue({
-      email: this.globals.email,
-      country: this.globals.country,
+      email: Globals.email,
+      country: Globals.country,
     });
   }
 

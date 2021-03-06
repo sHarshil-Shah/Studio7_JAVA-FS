@@ -33,6 +33,7 @@ public class ContentController {
 
 	@PostMapping("/contents")
 	void addOrUpdateContent(@RequestBody Content content) {
+		System.out.println(content);
 		contentRepository.save(content);
 	}
 

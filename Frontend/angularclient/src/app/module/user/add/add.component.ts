@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 import { Globals } from 'src/app/global';
@@ -32,12 +32,11 @@ export class AddComponent {
 
   contries: string[] = [];
   constructor(fb: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService, public globals: Globals,
     public navbarService: ToolbarService,
   ) {
-    this.contries = this.globals.contries;
+    this.contries = Globals.contries;
     this.user = new User();
     this.isAdmin = this.navbarService.isAdmin();
     this.options = fb.group({

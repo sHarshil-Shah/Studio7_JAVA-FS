@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Globals {
-    email: string = '';
-    country: string = '';
-    contries = ["India", "Australia", "USA"];
+    static email: string = '';
+    static country: string = '';
+    static contries = ["India", "Australia", "USA"];
+    static languages = ["Hindi", "English"];
+    static generes = ["Action", "Drama"];
 }

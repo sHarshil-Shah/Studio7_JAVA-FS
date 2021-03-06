@@ -1,5 +1,7 @@
 package com.wipro.controller;
 
+import com.wipro.model.Combine;
+import com.wipro.model.Content;
 import com.wipro.model.User;
 import com.wipro.repository.UserRepository;
 import java.util.List;
@@ -33,7 +35,20 @@ public class UserController {
 
 	@PostMapping("/users")
 	void addOrUpdateUser(@RequestBody User user) {
+		System.out.println("Here-----------------------------");
+		System.out.println(user);
 		userRepository.save(user);
+		System.out.println("Completed");
+	}
+
+	@PostMapping("/users/updateUser")
+	void updateUser(@RequestBody Combine combine) {
+		User user = combine.user;
+		Content content = combine.content;
+		user.getWatchList().add(content);
+		content.getWatchUsers().add(user);
+		userRepository.save(user);
+		System.out.println("Completed");
 	}
 
 	@DeleteMapping("/users/{id}")

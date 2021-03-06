@@ -18,6 +18,7 @@ import { Globals } from './global';
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     RouterModule,
