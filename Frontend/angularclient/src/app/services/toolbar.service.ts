@@ -33,7 +33,7 @@ export class ToolbarService {
     this.admin = temp1;
     if (this.isAdmin()) {
       this.addItem('Add Content', 'contents/add');
-      //this.addItem('List User', 'users/list');
+      this.addItem('List Content', 'contents/list');
       this.addItem('Add User', 'users/add');
       this.addItem('List User', 'users/list');
     } else {

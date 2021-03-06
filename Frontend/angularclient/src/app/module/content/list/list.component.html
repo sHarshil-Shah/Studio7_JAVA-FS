@@ -1,0 +1,31 @@
+<h1>Content List</h1>
+<div class="card my-5">
+    <div class="card-body">
+        <table border="1" class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Discription</th>
+                    <th scope="col">Genere</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Trailer</th>
+                    <th scope="col">Movie/Series</th>
+                    <th scope="col">Cast</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let content of contents">
+                    <td>{{content.name}}</td>
+                    <td>{{content.discription}}</td>
+                    <td>{{content.genere}}</td>
+                    <td>{{content.rating}}</td>
+                    <td>{{content.language}}</td>
+                    <td>{{content.trailer}}</td>
+                    <td>{{content.movie == true ? "Movie" : "Series"}}</td>
+                    <td>{{content.cast}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

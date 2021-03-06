@@ -3,6 +3,7 @@ package com.wipro.controller;
 import com.wipro.model.Combine;
 import com.wipro.model.Content;
 import com.wipro.model.User;
+import com.wipro.repository.ContentRepository;
 import com.wipro.repository.UserRepository;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 	private final UserRepository userRepository;
+	private final ContentRepository contentRepository;
 
-	public UserController(UserRepository userRepository) {
+	public UserController(UserRepository userRepository, ContentRepository contentRepository) {
+		this.contentRepository = contentRepository;
 		this.userRepository = userRepository;
 	}
 
@@ -43,12 +46,12 @@ public class UserController {
 
 	@PostMapping("/users/updateUser")
 	void updateUser(@RequestBody Combine combine) {
-		User user = combine.user;
-		Content content = combine.content;
-		user.getWatchList().add(content);
-		content.getWatchUsers().add(user);
+		long userID = combine.userID;
+		long contentID = combine.contentID;
+		User user = userRepository.findById(userID).get();
+		user.getWatchList().add(contentRepository.findById(contentID).get());
 		userRepository.save(user);
-		System.out.println("Completed");
+		System.out.println("WatchList Updated");
 	}
 
 	@DeleteMapping("/users/{id}")

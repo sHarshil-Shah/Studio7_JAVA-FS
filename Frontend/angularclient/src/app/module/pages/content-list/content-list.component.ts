@@ -14,12 +14,14 @@ import { VideoComponent } from '../video/video.component';
 })
 export class ContentListComponent implements OnInit {
   contents: Content[] = [];
-
+  oriContent: Content[] = [];
+  name: string = "";
   constructor(private contentService: ContentService, private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.contentService.findAll().subscribe(data => {
       this.contents = data;
+      this.oriContent = data;
     });
   }
 
@@ -31,7 +33,14 @@ export class ContentListComponent implements OnInit {
 
   }
 
-
+  search() {
+    if (this.name == "") this.ngOnInit();
+    else {
+      this.contents = this.oriContent.filter(res => {
+        return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+    }
+  }
 
   watchlist(id: Number = 0): void {
     let user: User;

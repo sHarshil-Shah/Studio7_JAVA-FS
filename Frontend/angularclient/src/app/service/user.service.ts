@@ -23,8 +23,9 @@ export class UserService {
   }
 
   public addContent(user: User, content: Content) {
-   // user.watchList?.push(content);
-    return this.http.post(this.usersUrl+"/updateUser", { 'user': user, 'content': content });
+    // user.watchList?.push(content);
+    console.log(content.id);
+    return this.http.post(this.usersUrl + "/updateUser", { 'userID': user.id, 'contentID': content.id });
   }
 
   public findByEmail(email: String) {

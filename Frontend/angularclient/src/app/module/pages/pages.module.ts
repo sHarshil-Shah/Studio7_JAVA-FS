@@ -12,6 +12,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContentListComponent } from './content-list/content-list.component';
 import { Globals } from 'src/app/global';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [DashboardComponent, ContentListComponent, WatchlistComponent],
@@ -22,7 +24,9 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
     MatButtonModule,
     MatDialogModule,
     VgCoreModule,
-    FlexLayoutModule,
+    FlexLayoutModule, FormsModule,
+    MatInputModule,
+
 
   ], providers: [Globals],
 

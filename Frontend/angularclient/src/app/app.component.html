@@ -8,6 +8,7 @@
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
     <span>Studio 7</span> <span class="example-fill-remaining-space"></span>
+    
     <span *ngFor="let link of links;"> <button mat-flat-button color="primary"
         [routerLink]="link.path">{{link.text}}</button>&nbsp;&nbsp;</span>
 

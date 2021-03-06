@@ -4,9 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.wipro.model.*;
 import com.wipro.repository.*;
-
 import java.util.ArrayList;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,6 +42,10 @@ public class Studio7Application {
 					new ArrayList<>(), new ArrayList<>());
 			contentRepository.save(content);
 
+			content = new Content(1L, "ten4", "disc4", "Action", 0, "Hindi", "link3", false, "cast5, cast6",
+					new ArrayList<>(), new ArrayList<>());
+			contentRepository.save(content);
+			
 			content = new Content(1L, "con5", "disc5", "Drama", 0, "Hindi", "link3", false, "cast5, cast6",
 					new ArrayList<>(), new ArrayList<>());
 			contentRepository.save(content);
@@ -70,7 +72,6 @@ public class Studio7Application {
 					new ArrayList<>(), new ArrayList<>());
 			contentRepository.save(content);
 			contentRepository.findAll().forEach(System.out::println);
-
 		};
 	}
 
