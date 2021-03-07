@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { Content } from '../model/content';
+import { retry, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -19,7 +20,12 @@ export class UserService {
 
   public save(user: User) {
     console.log(user);
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(this.usersUrl, user).pipe(
+
+      catchError(async (err) => alert("User with the Email already exists!"))
+
+    );
+
   }
 
   public addContent(user: User, content: Content) {

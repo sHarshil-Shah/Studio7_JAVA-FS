@@ -23,6 +23,7 @@ export class ToolbarService {
   }
   updateLoginStatus() {
     this.clearAllItems();
+    this.admin = false;
     this.addItem('Login', 'users/login');
 
   }
@@ -32,10 +33,9 @@ export class ToolbarService {
     this.clearAllItems();
     this.admin = temp1;
     if (this.isAdmin()) {
-      this.addItem('Add Content', 'contents/add');
-      this.addItem('List Content', 'contents/list');
-      this.addItem('Add User', 'users/add');
-      this.addItem('List User', 'users/list');
+      this.addItem('Manage Content', 'contents/list');
+      this.addItem('List Subscriber', 'users/list');
+      // this.addItem('List User', 'users/list');
     } else {
       this.addItem('Dashboard', 'pages/dashboard');
       this.addItem('My WatchList', 'pages/watchlist');

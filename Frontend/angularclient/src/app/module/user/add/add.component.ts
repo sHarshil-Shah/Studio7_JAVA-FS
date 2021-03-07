@@ -62,7 +62,7 @@ export class AddComponent {
       if (admin.value == true) {
         this.user.admin = true;
       }
-      this.userService.save(this.user).subscribe(result => this.gotoUserList());
+      this.userService.save(this.user).subscribe(result =>this.gotoUserList());
     }
 
   }

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.links = this.navbarService.getLinks();
-    console.log(this.links);
+    //console.log(this.links);
   }
 
 }

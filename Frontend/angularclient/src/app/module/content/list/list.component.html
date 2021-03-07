@@ -1,4 +1,6 @@
 <h1>Content List</h1>
+<button mat-flat-button color="primary" style="margin-bottom: 20px;" (click)="goToAdd()">Add Content</button>
+
 <div class="card my-5">
     <div class="card-body">
         <table border="1" class="table table-bordered table-striped">
@@ -24,6 +26,8 @@
                     <td>{{content.trailer}}</td>
                     <td>{{content.movie == true ? "Movie" : "Series"}}</td>
                     <td>{{content.cast}}</td>
+                    <td><button mat-flat-button color="primary" (click)="update(content.id)">Update</button></td>
+                    <td><button mat-flat-button color="warn" (click)="delete(content.id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>

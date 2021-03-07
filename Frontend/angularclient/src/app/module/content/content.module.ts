@@ -11,10 +11,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Globals } from 'src/app/global';
 import { ListComponent } from './list/list.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
-  declarations: [AddComponent, ListComponent],
+  declarations: [AddComponent, ListComponent, UpdateComponent],
   imports: [
     CommonModule,
     ContentRoutingModule,

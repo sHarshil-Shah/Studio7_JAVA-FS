@@ -24,4 +24,9 @@ export class ContentService {
     console.log(content);
     return this.http.post<Content>(this.contentsUrl, content);
   }
+
+  public delete(contentId: number) {
+
+    return this.http.delete(this.contentsUrl + "/" + contentId);
+  }
 }

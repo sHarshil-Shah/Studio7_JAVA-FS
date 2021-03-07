@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Content } from 'src/app/model/content';
 import { ContentService } from 'src/app/service/content.service';
 import { Globals } from 'src/app/global';
 import { ToolbarService } from 'src/app/services/toolbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -27,8 +26,9 @@ export class AddComponent {
   content: Content;
   generes: string[];
   languages: string[];
+
   constructor(private contentService: ContentService, public globals: Globals,
-    public navbarService: ToolbarService,
+    public navbarService: ToolbarService,private router: Router,
   ) {
     this.generes = Globals.generes;
     this.languages = Globals.languages;
@@ -64,6 +64,7 @@ export class AddComponent {
      // console.log(this.content);
       this.contentService.save(this.content).subscribe();
       alert("Content added successfully!!");
+      this.router.navigate(['contents/list']);
     }
 
   }

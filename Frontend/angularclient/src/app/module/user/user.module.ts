@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AccountComponent } from './account/account.component';
 import { Globals } from 'src/app/global';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [AddComponent, ListComponent, LoginComponent, AccountComponent],
@@ -23,7 +24,8 @@ import { Globals } from 'src/app/global';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule 
   ],
   providers: [ Globals ],
 })
