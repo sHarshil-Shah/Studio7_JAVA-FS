@@ -15,6 +15,13 @@ import { VideoComponent } from '../video/video.component';
 export class ContentListComponent implements OnInit {
   contents: Content[] = [];
   oriContent: Content[] = [];
+
+  actionContents: Content[] = [];
+  oriActionContent: Content[] = [];
+
+  dramaContents: Content[] = [];
+  oriDramaContent: Content[] = [];
+
   name: string = "";
   constructor(private contentService: ContentService, private userService: UserService, public dialog: MatDialog) { }
 
@@ -22,13 +29,27 @@ export class ContentListComponent implements OnInit {
     this.contentService.findAll().subscribe(data => {
       this.contents = data;
       this.oriContent = data;
+
+      this.oriActionContent = this.oriContent.filter(res => {
+        return res.genere?.toLocaleLowerCase().match("action");
+      })
+
+      this.actionContents = this.oriActionContent;
+
+      this.oriDramaContent = this.oriContent.filter(res => {
+        return res.genere?.toLocaleLowerCase().match("drama");
+      })
+
+      this.dramaContents = this.oriDramaContent;
     });
   }
 
   openDialog(link: string | undefined): void {
+
+    console.log(link);
     const dialogRef = this.dialog.open(VideoComponent, {
       // width: '2000px',
-      data: { link: 'assets/1.mp4' }
+      data: { link: 'assets/' + link + '.mp4' }
     });
 
   }
@@ -37,6 +58,14 @@ export class ContentListComponent implements OnInit {
     if (this.name == "") this.ngOnInit();
     else {
       this.contents = this.oriContent.filter(res => {
+        return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+
+      this.actionContents = this.oriActionContent.filter(res => {
+        return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      })
+
+      this.dramaContents = this.oriDramaContent.filter(res => {
         return res.name?.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       })
     }
