@@ -1,0 +1,41 @@
+<mat-form-field appearance="outline">
+    <mat-label>Language</mat-label>
+    <mat-select #languageSelect multiple name="selectedLanguages" [(ngModel)]="selectedLanguages">
+        <mat-option *ngFor="let language of languages" (click)="clickedOption()" [value]="language">{{language}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+&nbsp;&nbsp;
+<mat-form-field appearance="outline">
+    <mat-label>Genere</mat-label>
+    <mat-select multiple name="selectedGeneres" [(ngModel)]="selectedGeneres">
+        <mat-option *ngFor="let genere of generes" (click)="clickedOption()" [value]="genere">{{genere}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+
+<mat-grid-list cols="6" rowHeight="2:3">
+    <mat-grid-tile *ngFor="let content of contents">
+        <div>
+            <mat-card class="example-card mat-elevation-z4">
+                <mat-card-header>
+                    <mat-card-title>{{content.name}}</mat-card-title>
+                    <mat-card-subtitle>{{content.genere}}</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p>{{ content.discription }}</p>
+                    <p>{{ content.rating }}</p>
+                    <p>{{ content.language }}</p>
+                    <p>{{ content.movie }}</p>
+                    <p>{{ content.cast }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch
+                        Trailer</button><br />
+                    <!-- <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button> -->
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

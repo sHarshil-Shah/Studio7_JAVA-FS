@@ -4,9 +4,9 @@ export class Content {
     id: number = 0;
     name: string | undefined;
     discription: string | undefined;
-    genere: string | undefined;
+    genere: string ="";
     rating: Number | undefined;
-    language: string | undefined;
+    language: string = '';
     trailer: string | undefined;
     movie: boolean = true;
     cast: string | undefined;

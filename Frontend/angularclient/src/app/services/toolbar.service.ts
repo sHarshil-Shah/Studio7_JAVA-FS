@@ -38,6 +38,8 @@ export class ToolbarService {
       // this.addItem('List User', 'users/list');
     } else {
       this.addItem('Dashboard', 'pages/dashboard');
+      this.addItem('Explore', 'pages/explore');
+
       this.addItem('My WatchList', 'pages/watchlist');
 
     }

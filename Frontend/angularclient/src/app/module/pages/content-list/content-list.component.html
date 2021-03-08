@@ -2,6 +2,8 @@
     <input matInput class="form-control searchbar" type="text" name="name" [(ngModel)]="name" (ngModelChange)="search()"
         placeholder="Enter a Movie/Series name to Search">
 </mat-form-field>
+<br />
+
 <h2>All</h2>
 <div class="container">
     <div *ngFor="let content of contents">

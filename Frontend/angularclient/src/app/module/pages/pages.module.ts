@@ -14,9 +14,12 @@ import { Globals } from 'src/app/global';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ExploreComponent } from './explore/explore.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
-  declarations: [DashboardComponent, ContentListComponent, WatchlistComponent],
+  declarations: [VideoComponent, DashboardComponent, ContentListComponent, WatchlistComponent, ExploreComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -26,6 +29,8 @@ import { MatInputModule } from '@angular/material/input';
     VgCoreModule,
     FlexLayoutModule, FormsModule,
     MatInputModule,
+    MatSelectModule,
+    MatGridListModule
 
 
   ], providers: [Globals],

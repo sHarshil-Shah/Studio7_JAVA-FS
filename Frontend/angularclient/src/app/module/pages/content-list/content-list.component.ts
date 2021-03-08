@@ -23,7 +23,10 @@ export class ContentListComponent implements OnInit {
   oriDramaContent: Content[] = [];
 
   name: string = "";
-  constructor(private contentService: ContentService, private userService: UserService, public dialog: MatDialog) { }
+
+  constructor(private contentService: ContentService, private userService: UserService, public dialog: MatDialog) {
+
+  }
 
   ngOnInit(): void {
     this.contentService.findAll().subscribe(data => {
@@ -42,7 +45,9 @@ export class ContentListComponent implements OnInit {
 
       this.dramaContents = this.oriDramaContent;
     });
+
   }
+
 
   openDialog(link: string | undefined): void {
 
