@@ -14,7 +14,7 @@
 </mat-form-field>
 
 
-<mat-grid-list cols="6" rowHeight="2:3">
+<mat-grid-list cols="6" rowHeight="2:4">
     <mat-grid-tile *ngFor="let content of contents">
         <div>
             <mat-card class="example-card mat-elevation-z4">
@@ -31,9 +31,9 @@
                     <p>{{ content.cast }}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch
+                    <button mat-raised-button (click)="openDialog(content.trailer, content)" color="primary">Watch
                         Trailer</button><br />
-                    <!-- <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button> -->
+                    <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button>
                 </mat-card-actions>
             </mat-card>
         </div>

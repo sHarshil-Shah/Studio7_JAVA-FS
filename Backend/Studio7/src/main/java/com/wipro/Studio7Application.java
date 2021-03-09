@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.wipro.entity.*;
 import com.wipro.repository.*;
-import java.util.ArrayList;
+import java.util.HashSet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,54 +23,54 @@ public class Studio7Application {
 	@Bean
 	CommandLineRunner init(UserRepository userRepository, ContentRepository contentRepository) {
 		return args -> {
-			User user = new User(1L, "admin@mail.com", "pass", "India", true, new ArrayList<>(), new ArrayList<>());
+			User user = new User(1L, "admin@mail.com", "pass", "India", true, new HashSet<>(), new HashSet<>());
 			userRepository.save(user);
-			user = new User(2L, "user@mail.com", "pass", "USA", false, new ArrayList<>(), new ArrayList<>());
+			user = new User(2L, "user@mail.com", "pass", "USA", false, new HashSet<>(), new HashSet<>());
 			userRepository.save(user);
 			userRepository.findAll().forEach(System.out::println);
 
-			Content content = new Content(1L, "con1", "disc1", "Action", 0, "English", "1", true, "cast1, cast2",
-					new ArrayList<>(), new ArrayList<>());
+			Content content = new Content(1L, "con1", "disc1", "Action", 0, "English", "1", "3", true, "cast1, cast2",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con2", "disc2", "Drama", 0, "Hindi", "2", false, "cast3, cast4",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con2", "disc2", "Drama", 0, "Hindi", "2", "4", false, "cast3, cast4",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con3", "disc3", "Action", 0, "Hindi", "1", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-
-			content = new Content(1L, "con4", "disc4", "Action", 0, "Hindi", "2", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con3", "disc3", "Action", 0, "Hindi", "1", "3", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
 
-			content = new Content(1L, "ten4", "disc4", "Action", 0, "Hindi", "1", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
-			contentRepository.save(content);
-			
-			content = new Content(1L, "con5", "disc5", "Drama", 0, "Hindi", "2", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con4", "disc4", "Action", 0, "Hindi", "2", "4", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
 
-			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "2", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "ten4", "disc4", "Action", 0, "Hindi", "1", "2", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "Drama", 0, "Hindi", "1", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+
+			content = new Content(1L, "con5", "disc5", "Drama", 0, "Hindi", "2", "4", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "1", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+
+			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "2", "1", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "Drama", 0, "Hindi", "2", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con6", "disc6", "Drama", 0, "Hindi", "1", "3", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "2", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "1", "4", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "2", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con6", "disc6", "Drama", 0, "Hindi", "2", "1", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
-			content = new Content(1L, "con6", "disc6", "Drama", 0, "Hindi", "1", false, "cast5, cast6",
-					new ArrayList<>(), new ArrayList<>());
+			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "2", "4", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
+			contentRepository.save(content);
+			content = new Content(1L, "con6", "disc6", "Action", 0, "Hindi", "2", "4", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
+			contentRepository.save(content);
+			content = new Content(1L, "con6", "disc6", "Drama", 0, "Hindi", "1", "3", false, "cast5, cast6",
+					new HashSet<>(), new HashSet<>());
 			contentRepository.save(content);
 			contentRepository.findAll().forEach(System.out::println);
 		};

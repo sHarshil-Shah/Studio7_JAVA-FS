@@ -21,7 +21,8 @@
                 <p>{{ content.cast }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch
+                <button mat-raised-button (click)="openDialog(content.trailer, content)"
+                    color="primary">Watch
                     Trailer</button><br />
                 <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button>
             </mat-card-actions>
@@ -51,9 +52,9 @@
                 <p>{{ content.cast }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch
+                <button mat-raised-button (click)="openDialog(content.trailer, content)" color="primary">Watch
                     Trailer</button><br />
-                <!-- <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button> -->
+                <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button>
                 <!-- <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button> -->
             </mat-card-actions>
@@ -83,11 +84,10 @@
                 <p>{{ content.cast }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button (click)="openDialog(content.trailer)" color="primary">Watch
-                    Trailer</button><br />
-                <!-- <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button> -->
-                <!-- <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button> -->
+                <button mat-raised-button (click)="openDialog(content.trailer, content)" color="primary">Watch
+                    Trailer</button>
+                <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button>
+            
             </mat-card-actions>
         </mat-card>
 

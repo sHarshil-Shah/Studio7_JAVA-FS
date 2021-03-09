@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Globals } from 'src/app/global';
 import { Content } from 'src/app/model/content';
+import { User } from 'src/app/model/user';
 import { ContentService } from 'src/app/service/content.service';
+import { UserService } from 'src/app/service/user.service';
 import { VideoComponent } from '../video/video.component';
 
 @Component({
@@ -19,7 +21,7 @@ export class ExploreComponent implements OnInit {
   selectedLanguages: string[] = [];
   selectedGeneres: string[] = [];
 
-  constructor(public dialog: MatDialog, private contentService: ContentService) {
+  constructor(public dialog: MatDialog, private contentService: ContentService, private userService: UserService) {
     this.languages = Globals.languages;
     this.generes = Globals.generes;
   }
@@ -31,12 +33,11 @@ export class ExploreComponent implements OnInit {
     });
   }
 
-  openDialog(link: string | undefined): void {
+  openDialog(link: string | undefined, content: Content): void {
 
-     console.log(link);
+    console.log(link);
     const dialogRef = this.dialog.open(VideoComponent, {
-      // width: '2000px',
-      data: { link: 'assets/' + link + '.mp4' }
+      data: { link: 'assets/' + link + '.mp4', Content: content }
     });
 
   }
@@ -63,4 +64,15 @@ export class ExploreComponent implements OnInit {
     }
   }
 
+  watchlist(id: Number = 0): void {
+    let user: User;
+    this.userService.findByEmail(Globals.email).subscribe(result => {
+      user = result;
+      this.contentService.findById(id).subscribe(content => {
+
+        this.userService.addContent(user, content).subscribe();
+      });
+    });
+
+  }
 }

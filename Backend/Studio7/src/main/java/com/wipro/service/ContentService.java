@@ -51,6 +51,8 @@ public class ContentService {
 		contentModel.setRating(content.getRating());
 		contentModel.setCast(content.getCast());
 		contentModel.setTrailer(content.getTrailer());
+		contentModel.setContentLink(content.getContentLink());
+
 		return contentModel;
 	}
 

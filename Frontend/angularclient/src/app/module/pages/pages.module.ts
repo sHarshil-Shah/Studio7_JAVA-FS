@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ExploreComponent } from './explore/explore.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [VideoComponent, DashboardComponent, ContentListComponent, WatchlistComponent, ExploreComponent],
   imports: [
@@ -30,7 +30,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     FlexLayoutModule, FormsModule,
     MatInputModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule
 
 
   ], providers: [Globals],

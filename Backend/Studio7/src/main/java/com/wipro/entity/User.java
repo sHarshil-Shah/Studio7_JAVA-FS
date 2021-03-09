@@ -18,19 +18,19 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "content_id") })
-	private List<Content> history = new ArrayList<>();
+	private Set<Content> history = new HashSet<>();
 
 	@ManyToMany(targetEntity = Content.class, cascade = { CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.REFRESH })
-	private List<Content> watchList = new ArrayList<>();
+	private Set<Content> watchList = new HashSet<>();
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Long id, String email, String pass, String country, boolean isAdmin, List<Content> history,
-			List<Content> watchList) {
+	public User(Long id, String email, String pass, String country, boolean isAdmin, Set<Content> history,
+			Set<Content> watchSet) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -38,7 +38,7 @@ public class User {
 		this.country = country;
 		this.isAdmin = isAdmin;
 		this.history = history;
-		this.watchList = watchList;
+		this.watchList = watchSet;
 	}
 
 	public Long getId() {
@@ -81,20 +81,20 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 
-	public List<Content> getHistory() {
+	public Set<Content> getHistory() {
 		return history;
 	}
 
-	public void setHistory(List<Content> history) {
+	public void setHistory(Set<Content> history) {
 		this.history = history;
 	}
 
-	public List<Content> getWatchList() {
+	public Set<Content> getWatchList() {
 		return watchList;
 	}
 
-	public void setWatchList(List<Content> watchList) {
-		this.watchList = watchList;
+	public void setWatchList(Set<Content> watchSet) {
+		this.watchList = watchSet;
 	}
 
 	@Override

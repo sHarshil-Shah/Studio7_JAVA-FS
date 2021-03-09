@@ -49,12 +49,12 @@ export class ContentListComponent implements OnInit {
   }
 
 
-  openDialog(link: string | undefined): void {
+  openDialog(link: string | undefined, content: Content): void {
 
     console.log(link);
     const dialogRef = this.dialog.open(VideoComponent, {
       // width: '2000px',
-      data: { link: 'assets/' + link + '.mp4' }
+      data: { link: 'assets/' + link + '.mp4', Content: content }
     });
 
   }

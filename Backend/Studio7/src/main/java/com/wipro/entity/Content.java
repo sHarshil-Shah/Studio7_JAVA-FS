@@ -15,14 +15,15 @@ public class Content {
 	private float rating;
 	private String language;
 	private String trailer;
+	private String contentLink;
 	private boolean isMovie;
 	private String cast;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "history")
-	private List<User> histUsers = new ArrayList<>();
+	private Set<User> histUsers = new HashSet<>();
 
 	@ManyToMany(targetEntity = User.class, mappedBy = "watchList", cascade = { CascadeType.PERSIST, CascadeType.DETACH,
 			CascadeType.MERGE, CascadeType.REFRESH })
-	private List<User> watchUsers = new ArrayList<>();
+	private Set<User> watchUsers = new HashSet<>();
 
 	public Content() {
 		super();
@@ -30,7 +31,8 @@ public class Content {
 	}
 
 	public Content(Long id, String name, String discription, String genere, float rating, String language,
-			String trailer, boolean isMovie, String cast, List<User> histUsers, List<User> watchUsers) {
+			String trailer, String contentLink, boolean isMovie, String cast, Set<User> histUsers,
+			Set<User> watchUsers) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,6 +41,7 @@ public class Content {
 		this.rating = rating;
 		this.language = language;
 		this.trailer = trailer;
+		this.contentLink = contentLink;
 		this.isMovie = isMovie;
 		this.cast = cast;
 		this.histUsers = histUsers;
@@ -117,27 +120,35 @@ public class Content {
 		this.cast = cast;
 	}
 
-	public List<User> getHistUsers() {
+	public String getContentLink() {
+		return contentLink;
+	}
+
+	public void setContentLink(String contentLink) {
+		this.contentLink = contentLink;
+	}
+
+	public Set<User> getHistUsers() {
 		return histUsers;
 	}
 
-	public void setHistUsers(List<User> histUsers) {
+	public void setHistUsers(Set<User> histUsers) {
 		this.histUsers = histUsers;
 	}
 
-	public List<User> getWatchUsers() {
+	public Set<User> getWatchUsers() {
 		return watchUsers;
 	}
 
-	public void setWatchUsers(List<User> watchUsers) {
+	public void setWatchUsers(Set<User> watchUsers) {
 		this.watchUsers = watchUsers;
 	}
 
 	@Override
 	public String toString() {
 		return "Content [id=" + id + ", name=" + name + ", discription=" + discription + ", genere=" + genere
-				+ ", rating=" + rating + ", language=" + language + ", trailer=" + trailer + ", isMovie=" + isMovie
-				+ ", cast=" + cast + "]";
+				+ ", rating=" + rating + ", language=" + language + ", trailer=" + trailer + ", contentLink="
+				+ contentLink + ", isMovie=" + isMovie + ", cast=" + cast + "]";
 	}
 
 }

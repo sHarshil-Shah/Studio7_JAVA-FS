@@ -8,8 +8,17 @@ public class ContentModel {
 	private float rating;
 	private String language;
 	private String trailer;
+	private String contentLink;
 	private boolean isMovie;
 	private String cast;
+
+	public String getContentLink() {
+		return contentLink;
+	}
+
+	public void setContentLink(String contentLink) {
+		this.contentLink = contentLink;
+	}
 
 	public long getId() {
 		return id;

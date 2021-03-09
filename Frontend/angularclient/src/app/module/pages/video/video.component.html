@@ -1,6 +1,23 @@
-<video controls preload="none" autoplay>
-  <!-- <source src="one-does-not-simply.webm" type="video/webm"> -->
+<strong>Name:</strong>&nbsp;<label>{{name}}</label>&nbsp;&nbsp;
+<strong>Genere:</strong>&nbsp;<label>{{genere}}</label>&nbsp;&nbsp;
+
+<strong>Language:</strong>&nbsp;<label>{{language}}</label>&nbsp;&nbsp;
+
+<strong>Cast:</strong>&nbsp;<label>{{cast}}</label>&nbsp;&nbsp;
+
+<strong>Rating:</strong>&nbsp;<label>{{rating}}</label>&nbsp;&nbsp;
+<br />
+<strong>Discription:</strong><label>{{discription}}</label>&nbsp;&nbsp;
+
+<br />
+<video #video id="video" controls preload="none" autoplay>
   <source [src]="vidlink" type="video/mp4">
 </video>
 <br />
-<button mat-button (click)="sendMail()">Share</button>
+<button mat-button (click)="sendMail()">Share</button> &nbsp; &nbsp;
+<button mat-button (click)="playMovie()">Play Movie</button> &nbsp; &nbsp;
+<mat-form-field>
+
+  <input matInput placeholder="0-5">
+</mat-form-field>
+<button mat-button (click)="giveRating()">Give Rating</button> &nbsp; &nbsp;

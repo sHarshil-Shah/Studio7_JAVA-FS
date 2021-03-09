@@ -1,3 +1,7 @@
 .example-card{
     width: 150px;
 }
+button {
+    display: flex;
+    margin: auto!important;
+  }

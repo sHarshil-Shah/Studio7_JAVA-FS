@@ -10,6 +10,7 @@ import com.wipro.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -58,7 +59,10 @@ public class UserService {
 
 	private List<ContentModel> getWatchList(User user) {
 		List<ContentModel> roleList = new ArrayList<>();
-		List<Content> watchList = user.getWatchList();
+		Set<Content> watchSet = user.getWatchList();
+		List<Content> watchList = new ArrayList<>();
+		for (Content x : watchSet)
+			watchList.add(x);
 		for (int i = 0; i < watchList.size(); i++) {
 			ContentModel contentModel = new ContentModel();
 			contentModel.setId(watchList.get(i).getId());
@@ -71,6 +75,7 @@ public class UserService {
 			contentModel.setRating(watchList.get(i).getRating());
 			contentModel.setCast(watchList.get(i).getCast());
 			contentModel.setTrailer(watchList.get(i).getTrailer());
+			contentModel.setContentLink(watchList.get(i).getContentLink());
 
 			roleList.add(contentModel);
 		}
