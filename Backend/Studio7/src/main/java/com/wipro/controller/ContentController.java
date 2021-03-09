@@ -1,7 +1,10 @@
 package com.wipro.controller;
 
-import com.wipro.model.Content;
+import com.wipro.entity.Content;
+import com.wipro.model.ContentModel;
 import com.wipro.repository.ContentRepository;
+import com.wipro.service.ContentService;
+
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,19 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContentController {
 
 	private final ContentRepository contentRepository;
+	private final ContentService contentService;
 
-	public ContentController(ContentRepository contentRepository) {
+	public ContentController(ContentRepository contentRepository, ContentService contentService) {
 		this.contentRepository = contentRepository;
+		this.contentService = contentService;
 	}
 
 	@GetMapping("/contents")
-	public List<Content> getContents() {
-		return (List<Content>) contentRepository.findAll();
+	public List<ContentModel> getContents() {
+		return (List<ContentModel>) contentService.getContents();
 	}
 
 	@GetMapping("/contents/{id}")
-	public Content getContentById(@PathVariable("id") Long id) {
-		return contentRepository.findById(id).get();
+	public ContentModel getContentById(@PathVariable("id") Long id) {
+		return contentService.getContent(id);
 	}
 
 	@PostMapping("/contents")

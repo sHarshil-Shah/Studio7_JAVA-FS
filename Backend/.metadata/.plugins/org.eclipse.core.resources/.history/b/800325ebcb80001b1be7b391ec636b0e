@@ -1,0 +1,51 @@
+package com.wipro.service;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.wipro.entity.User;
+import com.wipro.model.UserModel;
+import com.wipro.repository.ContentRepository;
+import com.wipro.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class UserService {
+
+	private UserRepository userRepository;
+	private ContentRepository contentRepository;
+
+	public UserService(UserRepository userRepository, ContentRepository contentRepository) {
+		this.userRepository = userRepository;
+		this.contentRepository = contentRepository;
+	}
+
+	public UserModel getUser(Long id) {
+		if (userRepository.findById(id).isPresent()) {
+			User user = userRepository.findById(id).get();
+			UserModel userModel = new UserModel();
+			userModel.setEmail(user.getEmail());
+			userModel.setPass(user.getPass());
+			userModel.setCountry(user.getCountry());
+			userModel.setAdmin(user.isAdmin());
+			userModel.setWatchList(getWatchList(user));
+
+			return userModel;
+		} else
+			return null;
+	}
+
+	private List<RoleModel> getRoleList(User user) {
+		List<RoleModel> roleList = new ArrayList<>();
+		for (int i = 0; i < user.getRoles().size(); i++) {
+			RoleModel roleModel = new RoleModel();
+			roleModel.setName(user.getRoles().get(i).getName());
+			roleModel.setDescription(user.getRoles().get(i).getDescription());
+			roleList.add(roleModel);
+		}
+		return roleList;
+	}
+}

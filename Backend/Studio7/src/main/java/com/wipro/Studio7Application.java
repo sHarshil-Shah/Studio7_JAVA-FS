@@ -2,7 +2,8 @@ package com.wipro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.wipro.model.*;
+
+import com.wipro.entity.*;
 import com.wipro.repository.*;
 import java.util.ArrayList;
 import org.springframework.boot.CommandLineRunner;

@@ -1,0 +1,66 @@
+package com.wipro.service;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.wipro.entity.Content;
+import com.wipro.entity.User;
+import com.wipro.model.ContentModel;
+import com.wipro.model.UserModel;
+import com.wipro.repository.ContentRepository;
+import com.wipro.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class UserService {
+
+	private UserRepository userRepository;
+	private ContentRepository contentRepository;
+
+	public UserService(UserRepository userRepository, ContentRepository contentRepository) {
+		this.userRepository = userRepository;
+		this.contentRepository = contentRepository;
+	}
+
+	public UserModel getUser(Long id) {
+		if (userRepository.findById(id).isPresent()) {
+			User user = userRepository.findById(id).get();
+			return convertUserToUserModel(user);
+		} else
+			return null;
+	}
+
+	public UserModel convertUserToUserModel(User user) {
+		UserModel userModel = new UserModel();
+		userModel.setEmail(user.getEmail());
+		userModel.setPass(user.getPass());
+		userModel.setCountry(user.getCountry());
+		userModel.setAdmin(user.isAdmin());
+		userModel.setWatchList(getWatchList(user));
+
+		return userModel;
+	}
+
+	private List<ContentModel> getWatchList(User user) {
+		List<ContentModel> roleList = new ArrayList<>();
+		List<Content> watchList = user.getWatchList();
+		for (int i = 0; i < watchList.size(); i++) {
+			ContentModel contentModel = new ContentModel();
+			contentModel.setName(watchList.get(i).getName());
+
+			contentModel.setDiscription(watchList.get(i).getDiscription());
+			contentModel.setGenere(watchList.get(i).getGenere());
+			contentModel.setLanguage(watchList.get(i).getLanguage());
+			contentModel.setMovie(watchList.get(i).isMovie());
+			contentModel.setRating(watchList.get(i).getRating());
+			contentModel.setCast(watchList.get(i).getCast());
+			contentModel.setTrailer(watchList.get(i).getTrailer());
+
+			roleList.add(contentModel);
+		}
+		return roleList;
+	}
+}

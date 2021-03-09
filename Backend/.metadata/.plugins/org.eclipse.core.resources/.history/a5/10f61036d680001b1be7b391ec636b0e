@@ -1,0 +1,77 @@
+package com.wipro.service;
+
+import org.springframework.stereotype.Service;
+
+import com.wipro.entity.Content;
+import com.wipro.entity.User;
+import com.wipro.model.ContentModel;
+import com.wipro.model.UserModel;
+import com.wipro.repository.ContentRepository;
+import com.wipro.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class ContentService {
+
+	private ContentRepository contentRepository;
+
+	public ContentService(ContentRepository contentRepository) {
+		this.contentRepository = contentRepository;
+	}
+
+	public UserModel getUser(Long id) {
+		if (contentRepository.findById(id).isPresent()) {
+			User user = contentRepository.findById(id).get();
+			return convertUserToUserModel(user);
+		} else
+			return null;
+	}
+
+	public List<UserModel> getUsers() {
+		List<User> userList = (List<User>) userRepository.findAll();
+		if (userList.size() > 0) {
+			List<UserModel> userModels = new ArrayList<>();
+			for (User user : userList) {
+				userModels.add(convertUserToUserModel(user));
+			}
+			return userModels;
+		} else
+			return new ArrayList<UserModel>();
+	}
+
+	public UserModel findUserByEmail(String email) {
+		return convertUserToUserModel(userRepository.findUserByEmail(email).get(0));
+	}
+
+	public ContentModel convertContentToContentModel(Content content) {
+
+		ContentModel contentModel = new ContentModel();
+		contentModel.setName(content.getName());
+
+		contentModel.setDiscription(content.getDiscription());
+		contentModel.setGenere(content.getGenere());
+		contentModel.setLanguage(content.getLanguage());
+		contentModel.setMovie(content.isMovie());
+		contentModel.setRating(content.getRating());
+		contentModel.setCast(content.getCast());
+		contentModel.setTrailer(content.getTrailer());
+		return contentModel;
+	}
+
+//	private List<UserModel> getWatchUserList(Content content) {
+//		List<UserModel> userList = new ArrayList<>();
+//		List<User> watchUsers = content.getWatchUsers();
+//		for (int i = 0; i < watchUsers.size(); i++) {
+//			UserModel userModel = new UserModel();
+//			userModel.setEmail(watchUsers.get(i).getEmail());
+//			userModel.setPass(watchUsers.get(i).getPass());
+//			userModel.setCountry(watchUsers.get(i).getCountry());
+//			userModel.setAdmin(watchUsers.get(i).isAdmin());
+//
+//			userList.add(userModel);
+//		}
+//		return userList;
+//	}
+}

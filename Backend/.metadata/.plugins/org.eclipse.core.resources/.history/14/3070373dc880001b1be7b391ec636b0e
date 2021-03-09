@@ -1,0 +1,67 @@
+package com.wipro.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.wipro.model.Content;
+
+public class User {
+
+	private String email;
+	private String pass;
+	private String country;
+	private boolean isAdmin;
+
+	private List<Content> history = new ArrayList<>();
+
+	private List<Content> watchList = new ArrayList<>();
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public List<Content> getHistory() {
+		return history;
+	}
+
+	public void setHistory(List<Content> history) {
+		this.history = history;
+	}
+
+	public List<Content> getWatchList() {
+		return watchList;
+	}
+
+	public void setWatchList(List<Content> watchList) {
+		this.watchList = watchList;
+	}
+
+}

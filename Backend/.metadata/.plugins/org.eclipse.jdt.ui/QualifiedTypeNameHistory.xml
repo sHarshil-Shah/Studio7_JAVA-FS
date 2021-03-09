@@ -27,4 +27,6 @@
 <fullyQualifiedTypeName name="com.wipro.model.Combine"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.wipro.repository.ContentRepository"/>
+<fullyQualifiedTypeName name="com.wipro.model.User"/>
+<fullyQualifiedTypeName name="javax.transaction.Transactional"/>
 </qualifiedTypeNameHistroy>

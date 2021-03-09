@@ -1,0 +1,44 @@
+package com.wipro.service;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.wipro.entity.User;
+import com.wipro.model.UserModel;
+import com.wipro.repository.ContentRepository;
+import com.wipro.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class UserService {
+
+	private UserRepository userRepository;
+	private ContentRepository contentRepository;
+
+	public UserService(UserRepository userRepository, ContentRepository contentRepository) {
+		this.userRepository = userRepository;
+		this.contentRepository = contentRepository;
+	}
+
+	/** Create a new User */
+	public ResponseEntity<Object> createOrUpdateUser(User model) {
+
+		userRepository.save(model);
+		return ResponseEntity.ok("User Created Successfully");
+
+	}
+
+	public ResponseEntity<Object> deleteUser(Long id) {
+		if (userRepository.findById(id).isPresent()) {
+			userRepository.deleteById(id);
+			if (userRepository.findById(id).isPresent())
+				return ResponseEntity.unprocessableEntity().body("Failed to Delete the specified User");
+			else
+				return ResponseEntity.ok().body("Successfully deleted the specified user");
+		} else
+			return ResponseEntity.badRequest().body("Cannot find the user specified");
+	}
+}
