@@ -34,12 +34,12 @@ export class LoginComponent {
     if (email && pass) {
 
       this.userService.findByEmail(email.value).subscribe(result => {
+        Globals.userId = result.id;
         if (result.pass == pass.value) {
           if (result.country)
             Globals.country = result.country;
           if (result.email)
-              Globals.email = result.email;
-            console.log("Login:" + Globals.email);
+            Globals.email = result.email;
           if (result.admin) {
             this.navbarService.updateNavAfterAuth(true);
 

@@ -1,7 +1,7 @@
 import { Content } from "./content";
 
 export class User {
-    id: Number | undefined;
+    id: number = 0;
     email: string | undefined;
     pass: string | undefined;
     country: string | undefined;

@@ -4,7 +4,7 @@
 
 <body>
     <h1>My Account</h1>
-    <form [formGroup]="accountForm">
+    <form [formGroup]="accountForm" (ngSubmit)="updateUser()">
 
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>

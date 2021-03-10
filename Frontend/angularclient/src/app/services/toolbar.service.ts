@@ -39,6 +39,7 @@ export class ToolbarService {
     } else {
       this.addItem('Dashboard', 'pages/dashboard');
       this.addItem('Explore', 'pages/explore');
+      this.addItem('My Account', 'users/account');
 
       this.addItem('My WatchList', 'pages/watchlist');
 

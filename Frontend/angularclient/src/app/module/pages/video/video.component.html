@@ -16,8 +16,10 @@
 <br />
 <button mat-button (click)="sendMail()">Share</button> &nbsp; &nbsp;
 <button mat-button (click)="playMovie()">Play Movie</button> &nbsp; &nbsp;
-<mat-form-field>
+<form [formGroup]="ratingForm" (ngSubmit)="giveRating()">
 
-  <input matInput placeholder="0-5">
-</mat-form-field>
-<button mat-button (click)="giveRating()">Give Rating</button> &nbsp; &nbsp;
+  <mat-form-field>
+    <input matInput formControlName="rating" placeholder="Enter Rating (0-5)">
+  </mat-form-field>
+  <button mat-button type="submit">Give Rating</button> &nbsp; &nbsp;
+</form>

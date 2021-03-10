@@ -1,5 +1,9 @@
 package com.wipro.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.wipro.repository.RatingRepository;
+
 public class ContentModel {
 	private long id;
 	private String name;
@@ -58,6 +62,7 @@ public class ContentModel {
 
 	public void setRating(float rating) {
 		this.rating = rating;
+
 	}
 
 	public String getLanguage() {

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Set"/>
+		<item key="selection" value="rating"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="rating"/>
+			<item value="content"/>
+			<item value="Content"/>
 			<item value="List"/>
 			<item value="ArrayList"/>
 			<item value="ArraySet"/>
@@ -21,6 +24,8 @@
 			<item value="List&lt;Integer&gt;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="rating"/>
+			<item value="Rating"/>
 			<item value="Set"/>
 			<item value="HashSet"/>
 			<item value="watchUsers.get(i)"/>

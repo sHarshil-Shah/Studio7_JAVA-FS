@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { Content } from '../model/content';
-import { retry, catchError } from 'rxjs/operators';
+import {  catchError } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
