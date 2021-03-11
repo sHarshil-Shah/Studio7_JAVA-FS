@@ -1,0 +1,35 @@
+package com.wipro.repository;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+import java.util.HashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.wipro.entity.User;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+class UserRepositoryTest {
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Test
+	void testFindAll() {
+		User u = new User(3L, "admin1@mail.com", "pass", "India", true, new HashSet<>(), new HashSet<>());
+		userRepository.save(u);
+		userRepository.findAll().forEach(user->{
+			System.out.println(user);
+		});
+		assertEquals(2, );
+	}
+
+}

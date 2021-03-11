@@ -1,0 +1,50 @@
+package com.wipro.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.wipro.entity.Content;
+import com.wipro.model.ContentModel;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+class ContentControllerTest {
+	@Autowired
+	@Mock
+	ContentController contentController;
+
+	@Test
+	void testContentController() {
+		assertEquals(1, 1);
+	}
+
+	@Test
+	void testGetContents() {
+		assertEquals(13, contentController.getContents().size());
+	}
+
+	@Test
+	void testGetContentById() {
+		ContentModel content = contentController.getContentById(3L);
+
+		assertEquals(3L, content.getId());
+		assertEquals("English", content.getLanguage());
+	}
+
+	@Test
+	void testAddOrUpdateContent() {
+		Content content = new Content(4L, "name1", "disc1", "Action", 0, "English", 2, 3, false, "cast3, cast4");
+	}
+
+	@Test
+	void testDeleteContent() {
+		fail("Not yet implemented");
+	}
+
+}

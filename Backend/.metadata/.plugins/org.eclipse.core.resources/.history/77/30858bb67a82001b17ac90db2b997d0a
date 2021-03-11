@@ -1,0 +1,61 @@
+package com.wipro.controller;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashSet;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.wipro.entity.User;
+import com.wipro.model.UserModel;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class UserControllerTest {
+	@Autowired
+	@Mock
+	private UserController userController;
+
+	@Test
+	public void testGetUsers() {
+		assertEquals(2, userController.getUsers().size());
+	}
+
+	@Test
+	void testGetUserById() {
+		UserModel user = userController.getUserById(1L);
+		assertEquals(1L, user.getId());
+		assertEquals("admin@mail.com", user.getEmail());
+	}
+
+	@Test
+	void testAddOrUpdateUser() {
+		User user = new User(3L, "newuser@user.com", "mypass", "India", true, new HashSet<>(), new HashSet<>());
+		userController.addOrUpdateUser(user);
+
+		UserModel userM = userController.getUserByEmail(user.getEmail());
+		assertEquals(user.getEmail(), userM.getEmail());
+	}
+
+	@Test
+	void testUpdateUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUserByEmail() {
+		fail("Not yet implemented");
+	}
+
+}

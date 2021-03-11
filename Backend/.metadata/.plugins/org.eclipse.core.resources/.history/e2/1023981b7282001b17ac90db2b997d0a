@@ -1,0 +1,64 @@
+package com.wipro.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
+import java.util.HashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.wipro.entity.User;
+import com.wipro.repository.UserRepository;
+
+class UserControllerTest {
+	@Autowired
+	private UserController userController;
+
+	@MockBean
+	private UserRepository userRepository;
+
+	@Test
+	void testUserController() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUsers() {
+		when(userRepository.findAll()).thenReturn(Stream
+				.of(new User(1L, "admin@mail.com", "pass", "India", true, new HashSet<>(), new HashSet<>()),
+						new User(2L, "user@mail.com", "pass", "USA", false, new HashSet<>(), new HashSet<>()))
+				.collect(Collectors.toList()));
+
+		assertEquals(2, userController.getUsers());
+	}
+
+	@Test
+	void testGetUserById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddOrUpdateUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUserByEmail() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,58 @@
+package com.wipro.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.HashSet;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.wipro.entity.Content;
+import com.wipro.model.ContentModel;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+class ContentControllerTest {
+	@Autowired
+	@Mock
+	ContentController contentController;
+
+	@Test
+	void testContentController() {
+		assertEquals(1, 1);
+	}
+
+	@Test
+	void testGetContents() {
+		assertEquals(13, contentController.getContents().size());
+	}
+
+	@Test
+	void testGetContentById() {
+		ContentModel content = contentController.getContentById(3L);
+
+		assertEquals(3L, content.getId());
+		assertEquals("English", content.getLanguage());
+	}
+
+	@Test
+	void testAddOrUpdateContent() {
+		Content content = new Content(1L, "newCont", "dis31", "Action", 0, "Urdu", "1", "3", true, "cast5, cast6",
+				new HashSet<>(), new HashSet<>());
+
+		contentController.addOrUpdateContent(content);
+
+		ContentModel contentM = contentController.getContentById(1L);
+		assertEquals(content.getName(), contentM.getName());
+	}
+
+	@Test
+	void testDeleteContent() {
+		fail("Not yet implemented");
+	}
+
+}

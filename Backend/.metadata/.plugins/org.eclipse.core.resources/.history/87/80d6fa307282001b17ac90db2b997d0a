@@ -1,0 +1,7 @@
+package com.wipro;
+
+@SpringBootTest
+
+public class Studio7ApplicationTests {
+
+}

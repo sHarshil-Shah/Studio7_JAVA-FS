@@ -1,0 +1,34 @@
+package com.wipro.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ContentControllerTest {
+
+	@Test
+	void testContentController() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetContents() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetContentById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddOrUpdateContent() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteContent() {
+		fail("Not yet implemented");
+	}
+
+}

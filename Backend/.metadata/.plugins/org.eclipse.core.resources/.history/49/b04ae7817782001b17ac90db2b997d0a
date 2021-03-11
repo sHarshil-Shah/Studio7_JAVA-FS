@@ -1,0 +1,54 @@
+package com.wipro.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class UserControllerTest {
+	@Autowired
+	@Mock
+	private UserController userController;
+
+	@Test
+	void testUserController() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetUsers() {
+		assertEquals(2, userController.getUsers().size());
+	}
+
+	@Test
+	void testGetUserById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testAddOrUpdateUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testUpdateUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUserByEmail() {
+		fail("Not yet implemented");
+	}
+
+}

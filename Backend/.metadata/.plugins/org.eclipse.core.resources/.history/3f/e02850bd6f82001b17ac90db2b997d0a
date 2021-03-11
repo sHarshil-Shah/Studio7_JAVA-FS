@@ -1,0 +1,42 @@
+package com.wipro;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.HashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.wipro.controller.UserController;
+import com.wipro.entity.User;
+import com.wipro.repository.UserRepository;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+
+public class Studio7ApplicationTests {
+	@Autowired
+	private UserController userController;
+
+	@MockBean
+	private UserRepository userRepository;
+
+	@Test
+	public void getUser() {
+		when(userRepository.findAll()).thenReturn(Stream
+				.of(new User(1L, "admin@mail.com", "pass", "India", true, new HashSet<>(), new HashSet<>()),
+						new User(2L, "user@mail.com", "pass", "USA", false, new HashSet<>(), new HashSet<>()))
+				.collect(Collectors.toList()));
+
+		assertEquals(2, userController.getUsers());
+	}
+}

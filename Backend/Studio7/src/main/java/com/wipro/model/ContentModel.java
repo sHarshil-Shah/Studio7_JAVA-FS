@@ -1,9 +1,5 @@
 package com.wipro.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.wipro.repository.RatingRepository;
-
 public class ContentModel {
 	private long id;
 	private String name;

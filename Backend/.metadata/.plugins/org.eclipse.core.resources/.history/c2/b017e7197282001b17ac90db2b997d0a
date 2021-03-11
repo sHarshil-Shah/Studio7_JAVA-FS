@@ -1,0 +1,34 @@
+package com.wipro.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class UserServiceTest {
+
+	@Test
+	void testUserService() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUser() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUsers() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testFindUserByEmail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testConvertUserToUserModel() {
+		fail("Not yet implemented");
+	}
+
+}

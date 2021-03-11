@@ -1,0 +1,69 @@
+package com.wipro.repository;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class UserRepositoryTest {
+
+	@Test
+	void testFindUserByEmail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSave() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testSaveAll() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testFindById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testExistsById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testFindAll() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testFindAllById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testCount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDelete() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteAllIterableOfQextendsT() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testDeleteAll() {
+		fail("Not yet implemented");
+	}
+
+}
