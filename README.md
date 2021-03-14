@@ -9,7 +9,7 @@
 
 | **Function**      | **Type** | **URL**           |
 | ----------------- | -------- | ----------------- |
-| **/users**        |
+| **/users**                                       |
 | sendEmail         | POST     | /sendmail/emailid |
 | getAll            | GET      | /                 |
 | getById           | GET      | /id               |
@@ -17,12 +17,12 @@
 | Add               | POST     | /                 |
 | Delete            | DELETE   | /                 |
 | update            | POST     | /updateUser       |
-| **/contents**     |
+| **/contents**                                    |
 | getAll            | GET      | /                 |
 | getById           | GET      | /id               |
 | Add/Update        | POST     | /                 |
 | delete            | DELETE   | /id               |
-| **/ratings**      |
+| **/ratings**                                     |
 | getAll            | GET      | /                 |
 | getById           | GET      | /id               |
 | Add/Update        | POST     | /                 |
