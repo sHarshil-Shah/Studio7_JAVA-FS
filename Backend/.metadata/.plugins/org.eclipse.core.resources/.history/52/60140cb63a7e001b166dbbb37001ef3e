@@ -1,6 +1,0 @@
-package com.wipro.model;
-
-public class Combine {
-	User user;
-	Content content;
-}

@@ -5,7 +5,7 @@ export class Content {
     name: string | undefined;
     discription: string | undefined;
     genere: string = "";
-    rating: Number | undefined;
+    rating: number = 0;
     language: string = '';
     trailer: string | undefined;
     contentLink: string = '';

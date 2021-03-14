@@ -39,7 +39,7 @@ public class RatingController {
 	}
 
 	@GetMapping("/ratings/content/{id}")
-	float getRatingforContent(@PathVariable long id) {
+	public float getRatingforContent(@PathVariable long id) {
 		try {
 			return ratingRepository.getRatingforContent(id);
 		} catch (Exception e) {

@@ -19,6 +19,7 @@ import { ExploreComponent } from './explore/explore.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { ProfileComponent } from './profile/profile.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [VideoComponent, DashboardComponent, ContentListComponent, WatchlistComponent, ExploreComponent, ProfileComponent],
@@ -34,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatSelectModule,
     MatGridListModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule
 
 
   ], providers: [Globals],

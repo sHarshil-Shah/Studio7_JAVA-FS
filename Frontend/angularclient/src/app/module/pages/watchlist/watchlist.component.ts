@@ -10,7 +10,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./watchlist.component.css']
 })
 export class WatchlistComponent implements OnInit {
-  columns: string[] = ['Name', 'Discription', 'Genere', 'Rating', 'Language', 'Cast'];
+  columns: string[] = ['Name', 'Discription', 'Genere', 'Language', 'Cast'];
   dataSource: any;
 
   drop(event: CdkDragDrop<string[]>) {

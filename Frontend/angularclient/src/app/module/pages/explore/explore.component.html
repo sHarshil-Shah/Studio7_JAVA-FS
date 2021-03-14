@@ -12,6 +12,11 @@
         <mat-option *ngFor="let genere of generes" (click)="clickedOption()" [value]="genere">{{genere}}</mat-option>
     </mat-select>
 </mat-form-field>
+&nbsp;&nbsp;
+<mat-radio-group (change)="contentRefresh($event)" aria-label="Select Contnent Type">
+    <mat-radio-button value="true" checked="true">Movie</mat-radio-button>&nbsp;
+    <mat-radio-button value="false">Series</mat-radio-button>
+</mat-radio-group>
 
 
 <mat-grid-list cols="6" rowHeight="2:4">
@@ -24,15 +29,13 @@
                 </mat-card-header>
 
                 <mat-card-content>
-                    <p>{{ content.discription }}</p>
-                    <p>{{ content.rating }}</p>
+                    Rating: <span>{{ content.rating }}/5</span>
                     <p>{{ content.language }}</p>
-                    <p>{{ content.movie }}</p>
                     <p>{{ content.cast }}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button (click)="openDialog(content.trailer, content)" color="primary">Watch
-                        Trailer</button><br />
+                    <button mat-raised-button (click)="openDialog(content.trailer, content)"
+                        color="primary">Watch</button><br />
                     <button mat-raised-button (click)="watchlist(content.id)" color="primary">Add to Watchlist</button>
                 </mat-card-actions>
             </mat-card>

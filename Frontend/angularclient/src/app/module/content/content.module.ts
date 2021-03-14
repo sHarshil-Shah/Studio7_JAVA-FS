@@ -12,6 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Globals } from 'src/app/global';
 import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UpdateComponent } from './update/update.component';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule
   ],
   providers: [Globals],
 })

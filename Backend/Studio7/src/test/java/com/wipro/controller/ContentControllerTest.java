@@ -28,7 +28,7 @@ class ContentControllerTest {
 
 	@Test
 	void testGetContents() {
-		assertEquals(13, contentController.getContents().size());
+		assertEquals(12, contentController.getContents().size());
 	}
 
 	@Test

@@ -6,6 +6,7 @@ import { Rating } from 'src/app/model/rating';
 import { ContentService } from 'src/app/service/content.service';
 import { RatingService } from 'src/app/service/rating.service';
 import { UserService } from 'src/app/service/user.service';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: 'app-video',
@@ -22,23 +23,27 @@ export class VideoComponent implements OnInit {
   contentLink: string = '';
 
 
-
   ratingForm = new FormGroup({
     rating: new FormControl(''),
   });
 
+
+  shareForm = new FormGroup({
+    EmailId: new FormControl(''),
+  });
   constructor(
     public dialogRef: MatDialogRef<VideoComponent>,
     @Inject(MAT_DIALOG_DATA) public link: any,
     private ratingService: RatingService,
     private userService: UserService,
-    private contentService: ContentService
+    private contentService: ContentService,
+    private http: HttpClient,
 
   ) { }
 
   vidlink: string = "";
   ngOnInit(): void {
-    this.vidlink = this.link['link'];
+    this.vidlink = this.link['link'];;
     this.name = this.link['Content'].name;
     this.genere = this.link['Content'].genere;
     this.language = this.link['Content'].language;
@@ -54,9 +59,19 @@ export class VideoComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  sendMail() {
+  sendmail() {
+    let emailid = this.shareForm.get('EmailId');
+    if (emailid?.value) {
+      this.userService.sendMail(emailid?.value, this.link['Content'].name).subscribe(res => {
+        alert('Recommandation Email has been sent to ' + emailid?.value);
+      });
 
-  } @ViewChild('video')
+    }
+    else {
+      alert('Please enter an email ID.');
+    }
+  }
+  @ViewChild('video')
 
   public video!: ElementRef;
 
@@ -74,6 +89,7 @@ export class VideoComponent implements OnInit {
     this.cRating.user.id = Globals.userId;
     this.cRating.content.id = this.link['Content'].id;
     this.ratingService.save(this.cRating).subscribe();
+    alert('You rated: ' + this.cRating.rating);
   }
 
   getRating() {

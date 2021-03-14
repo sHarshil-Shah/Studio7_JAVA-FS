@@ -2,6 +2,7 @@ package com.wipro.service;
 
 import org.springframework.stereotype.Service;
 
+import com.wipro.controller.RatingController;
 import com.wipro.entity.Content;
 import com.wipro.model.ContentModel;
 import com.wipro.repository.ContentRepository;
@@ -13,9 +14,11 @@ import java.util.List;
 public class ContentService {
 
 	private ContentRepository contentRepository;
+	private RatingController ratingController;
 
-	public ContentService(ContentRepository contentRepository) {
+	public ContentService(ContentRepository contentRepository, RatingController ratingController) {
 		this.contentRepository = contentRepository;
+		this.ratingController = ratingController;
 	}
 
 	public ContentModel getContent(Long id) {
@@ -48,26 +51,12 @@ public class ContentService {
 		contentModel.setGenere(content.getGenere());
 		contentModel.setLanguage(content.getLanguage());
 		contentModel.setMovie(content.isMovie());
-		contentModel.setRating(content.getRating());
+		System.out.println(content.getId());
+		contentModel.setRating(ratingController.getRatingforContent(content.getId()));
 		contentModel.setCast(content.getCast());
 		contentModel.setTrailer(content.getTrailer());
 		contentModel.setContentLink(content.getContentLink());
 
 		return contentModel;
 	}
-
-//	private List<UserModel> getWatchUserList(Content content) {
-//		List<UserModel> userList = new ArrayList<>();
-//		List<User> watchUsers = content.getWatchUsers();
-//		for (int i = 0; i < watchUsers.size(); i++) {
-//			UserModel userModel = new UserModel();
-//			userModel.setEmail(watchUsers.get(i).getEmail());
-//			userModel.setPass(watchUsers.get(i).getPass());
-//			userModel.setCountry(watchUsers.get(i).getCountry());
-//			userModel.setAdmin(watchUsers.get(i).isAdmin());
-//
-//			userList.add(userModel);
-//		}
-//		return userList;
-//	}
 }

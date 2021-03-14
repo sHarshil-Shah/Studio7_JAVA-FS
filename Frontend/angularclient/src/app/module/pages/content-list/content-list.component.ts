@@ -83,6 +83,8 @@ export class ContentListComponent implements OnInit {
       this.contentService.findById(id).subscribe(content => {
 
         this.userService.addContent(user, content).subscribe();
+        alert('Added to watchlist!');
+
       });
     });
 

@@ -1,0 +1,118 @@
+package com.wipro.controller;
+
+import com.wipro.entity.Combine;
+import com.wipro.entity.User;
+import com.wipro.model.UserModel;
+import com.wipro.repository.ContentRepository;
+import com.wipro.repository.UserRepository;
+import com.wipro.service.UserService;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
+
+import javax.mail.*;
+import javax.mail.internet.*;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+public class UserController {
+	private UserService userService;
+
+	private final UserRepository userRepository;
+	private final ContentRepository contentRepository;
+
+	public UserController(UserRepository userRepository, ContentRepository contentRepository, UserService userService) {
+		this.contentRepository = contentRepository;
+		this.userRepository = userRepository;
+		this.userService = userService;
+	}
+
+	private void sendmail() throws AddressException, MessagingException, IOException {
+		System.out.println("send mail start");
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("tempggl1@gmail.com", "gglpassword1");
+			}
+		});
+		Message msg = new MimeMessage(session);
+		msg.setFrom(new InternetAddress("tempggl1@gmail.com", false));
+
+		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sharshil1299@gmail.com"));
+		msg.setSubject("Tutorials point email");
+		msg.setContent("Tutorials point email", "text/html");
+		msg.setSentDate(new Date());
+
+		MimeBodyPart messageBodyPart = new MimeBodyPart();
+		messageBodyPart.setContent("Tutorials point email", "text/html");
+
+		Multipart multipart = new MimeMultipart();
+		multipart.addBodyPart(messageBodyPart);
+		MimeBodyPart attachPart = new MimeBodyPart();
+
+		attachPart.attachFile("/var/tmp/image19.png");
+		multipart.addBodyPart(attachPart);
+		msg.setContent(multipart);
+		Transport.send(msg);
+		System.out.println("send mail");
+	}
+
+	@PostMapping("/users/sendemail")
+	public void sendEmail() throws AddressException, MessagingException, IOException {
+		sendmail();
+	}
+
+	@GetMapping("/users")
+	public List<UserModel> getUsers() {
+		return userService.getUsers();
+	}
+
+	@GetMapping("/users/{id}")
+	public UserModel getUserById(@PathVariable("id") Long id) {
+		return userService.getUser(id);
+	}
+
+	@PostMapping("/users")
+	void addOrUpdateUser(@RequestBody User user) {
+		System.out.println("Here-----------------------------");
+		System.out.println(user);
+		userRepository.save(user);
+		System.out.println("Completed");
+	}
+
+	@PostMapping("/users/updateUser")
+	void updateUser(@RequestBody Combine combine) {
+		long userID = combine.userID;
+		long contentID = combine.contentID;
+		User user = userRepository.findById(userID).get();
+		user.getWatchList().add(contentRepository.findById(contentID).get());
+		userRepository.save(user);
+		System.out.println("WatchList Updated");
+	}
+
+	@DeleteMapping("/users/{id}")
+	void deleteUser(@PathVariable("id") Long id) {
+		userRepository.deleteById(id);
+	}
+
+	@GetMapping("/users/email/{email}")
+	public UserModel getUserByEmail(@PathVariable("email") String email) {
+		return userService.findUserByEmail(email);
+	}
+}

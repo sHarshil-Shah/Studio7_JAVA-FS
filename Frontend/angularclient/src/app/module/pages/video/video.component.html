@@ -14,12 +14,27 @@
   <source [src]="vidlink" type="video/mp4">
 </video>
 <br />
-<button mat-button (click)="sendMail()">Share</button> &nbsp; &nbsp;
-<button mat-button (click)="playMovie()">Play Movie</button> &nbsp; &nbsp;
-<form [formGroup]="ratingForm" (ngSubmit)="giveRating()">
 
-  <mat-form-field>
-    <input matInput formControlName="rating" placeholder="Enter Rating (0-5)">
-  </mat-form-field>
-  <button mat-button type="submit">Give Rating</button> &nbsp; &nbsp;
-</form>
+<table>
+  <tr>
+    <td>
+      <form [formGroup]="shareForm" (ngSubmit)="sendmail()">
+        <mat-form-field>
+          <input matInput formControlName="EmailId" placeholder="Enter Email ID">
+        </mat-form-field>
+        <button mat-button type="submit">Share</button>
+      </form>
+    </td>
+    <td>
+
+      <form [formGroup]="ratingForm" (ngSubmit)="giveRating()">
+
+        <button mat-button type="button" (click)="playMovie()">Play Movie</button> &nbsp; &nbsp;
+        <mat-form-field>
+          <input matInput formControlName="rating" placeholder="Enter Rating (0-5)">
+        </mat-form-field>
+        <button mat-button type="submit">Give Rating</button> &nbsp; &nbsp;
+      </form>
+    </td>
+  </tr>
+</table>

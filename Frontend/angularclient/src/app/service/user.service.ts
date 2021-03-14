@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { Content } from '../model/content';
-import {  catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { Globals } from '../global';
 
 @Injectable()
 export class UserService {
@@ -26,6 +27,9 @@ export class UserService {
 
     );
 
+  }
+  public sendMail(email: string, message: string) {
+    return this.http.post(this.usersUrl + "/sendmail/" + email, message);
   }
 
   public addContent(user: User, content: Content) {

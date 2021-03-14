@@ -28,8 +28,9 @@ export class ExploreComponent implements OnInit {
 
   ngOnInit(): void {
     this.contentService.findAll().subscribe(data => {
-      this.contents = data;
       this.oriContents = data;
+
+      this.contentRefresh({ value: true });
     });
   }
 
@@ -50,15 +51,15 @@ export class ExploreComponent implements OnInit {
     if (selLan.length == 0 && selGen.length == 0) {
       this.ngOnInit();
     } else if (selLan.length == 0) {
-      this.contents = this.oriContents.filter(res => {
+      this.contents = this.contents.filter(res => {
         return selGen.includes(res.genere);
       })
     } else if (selGen.length == 0) {
-      this.contents = this.oriContents.filter(res => {
+      this.contents = this.contents.filter(res => {
         return selLan.includes(res.language);
       })
     } else {
-      this.contents = this.oriContents.filter(res => {
+      this.contents = this.contents.filter(res => {
         return selLan.includes(res.language) && selGen.includes(res.genere);
       })
     }
@@ -69,10 +70,16 @@ export class ExploreComponent implements OnInit {
     this.userService.findByEmail(Globals.email).subscribe(result => {
       user = result;
       this.contentService.findById(id).subscribe(content => {
-
         this.userService.addContent(user, content).subscribe();
+        alert('Added to watchlist!');
       });
     });
-
+  }
+  contentRefresh(event: any) {
+    this.selectedGeneres = [];
+    this.selectedLanguages = [];
+    this.contents = this.oriContents.filter(res => {
+      return res.movie !== (event.value === "true");
+    })
   }
 }
