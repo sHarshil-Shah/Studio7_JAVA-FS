@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { Globals } from 'src/app/global';
@@ -14,8 +14,8 @@ export class LoginComponent {
   hide = true;
 
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    pass: new FormControl(''),
+    email: new FormControl('', [Validators.required,]),
+    pass: new FormControl('', [Validators.required,]),
   });
 
   constructor(
@@ -48,6 +48,8 @@ export class LoginComponent {
             this.navbarService.updateNavAfterAuth(false);
             this.gotoDashboard();
           }
+        } else {
+          alert('Username or password is incorrect!');
         }
 
       });

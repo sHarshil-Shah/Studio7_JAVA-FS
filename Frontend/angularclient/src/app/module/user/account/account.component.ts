@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 export class AccountComponent implements OnInit {
   contries: string[] = [];
   accountForm = new FormGroup({
-    email: new FormControl(''),
+    email: new FormControl({ value: '', disabled: true }),
     password: new FormControl(''),
     newpassword: new FormControl(''),
     newpasswordconfirm: new FormControl(''),

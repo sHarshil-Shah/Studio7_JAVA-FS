@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Globals } from 'src/app/global';
 import { Rating } from 'src/app/model/rating';
@@ -22,15 +22,17 @@ export class VideoComponent implements OnInit {
   rating: any = 0;
   contentLink: string = '';
 
-
   ratingForm = new FormGroup({
-    rating: new FormControl(''),
+    rating: new FormControl('', [Validators.required]),
   });
 
 
   shareForm = new FormGroup({
-    EmailId: new FormControl(''),
+    EmailId: new FormControl('', [Validators.email, Validators.required]),
   });
+
+
+
   constructor(
     public dialogRef: MatDialogRef<VideoComponent>,
     @Inject(MAT_DIALOG_DATA) public link: any,
@@ -61,7 +63,7 @@ export class VideoComponent implements OnInit {
 
   sendmail() {
     let emailid = this.shareForm.get('EmailId');
-    if (emailid?.value) {
+    if (emailid?.valid) {
       this.userService.sendMail(emailid?.value, this.link['Content'].name).subscribe(res => {
         alert('Recommandation Email has been sent to ' + emailid?.value);
       });
@@ -88,8 +90,13 @@ export class VideoComponent implements OnInit {
     this.cRating.rating = this.ratingForm.get('rating')?.value;
     this.cRating.user.id = Globals.userId;
     this.cRating.content.id = this.link['Content'].id;
-    this.ratingService.save(this.cRating).subscribe();
-    alert('You rated: ' + this.cRating.rating);
+    if (this.ratingForm.get('rating')?.valid) {
+      this.ratingService.save(this.cRating).subscribe();
+      alert('You rated: ' + this.cRating.rating);
+    }
+    else {
+      alert('Enter rating between 0-5');
+    }
   }
 
   getRating() {

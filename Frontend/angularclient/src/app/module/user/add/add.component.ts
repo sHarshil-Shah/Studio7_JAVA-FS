@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
@@ -15,9 +15,9 @@ import { ToolbarService } from 'src/app/services/toolbar.service';
 export class AddComponent {
 
   addUserForm = new FormGroup({
-    email: new FormControl(''),
-    pass: new FormControl(''),
-    country: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    pass: new FormControl('', [Validators.required]),
+    country: new FormControl('', [Validators.required]),
     admin: new FormControl(''),
   });
 
@@ -53,16 +53,16 @@ export class AddComponent {
     const admin = this.addUserForm.get('admin');
 
 
-    if (email && pass && country && admin) {
-      //console.log(admin.value);
-
+    if (email?.valid && pass?.valid && country?.valid && admin) {
       this.user.email = email.value;
       this.user.pass = pass.value;
       this.user.country = country.value;
       if (admin.value == true) {
         this.user.admin = true;
       }
-      this.userService.save(this.user).subscribe(result =>this.gotoUserList());
+      this.userService.save(this.user).subscribe(result => this.gotoUserList());
+    } else {
+      alert('One or more fields required');
     }
 
   }
