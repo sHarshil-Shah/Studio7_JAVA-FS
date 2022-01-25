@@ -27,7 +27,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: ${{ secrets.DOCK_USER }}/s7backend
+        image: ${{ secrets.DOCKER_USER }}/s7backend
         tags: latest
         registry: docker.io
         dockerfile: ./Backend/Studio7/Dockerfile
