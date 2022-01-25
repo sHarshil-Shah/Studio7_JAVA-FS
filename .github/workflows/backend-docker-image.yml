@@ -32,5 +32,7 @@ jobs:
         registry: docker.io
         dockerfile: ./Backend/Studio7/Dockerfile
         directory: ./Backend/Studio7
+        buildArgs:
+         - arch: linux/amd64
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
