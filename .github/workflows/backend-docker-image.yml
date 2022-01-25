@@ -32,5 +32,5 @@ jobs:
         registry: docker.io
         dockerfile: ./Backend/Studio7/Dockerfile
         directory: ./Backend/Studio7
-        username: ${{ secrets.DOCK_USER }}
-        password: ${{ secrets.DOCK_PASS }}
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
