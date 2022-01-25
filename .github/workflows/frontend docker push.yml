@@ -15,5 +15,7 @@ jobs:
         image: ${{ secrets.DOCKER_USER }}/s7frontend
         tags: latest
         registry: docker.io
+        dockerfile: ./Frontend/angularclient/Dockerfile
+        directory: ./Frontend/angularclient
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
