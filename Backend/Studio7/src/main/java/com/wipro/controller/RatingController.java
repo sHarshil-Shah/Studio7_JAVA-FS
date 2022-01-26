@@ -14,7 +14,7 @@ import com.wipro.entity.Rating;
 import com.wipro.repository.RatingRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class RatingController {
 
 	private final RatingRepository ratingRepository;
