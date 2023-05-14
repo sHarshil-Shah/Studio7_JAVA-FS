@@ -12,7 +12,7 @@ export class UserService {
   private usersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://65.1.105.69:8080/users';
+    this.usersUrl = 'https://s7backend.onrender.com/users';
   }
 
   public findAll(): Observable<User[]> {
