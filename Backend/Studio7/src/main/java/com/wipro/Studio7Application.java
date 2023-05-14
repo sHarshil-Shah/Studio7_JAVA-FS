@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.wipro")
@@ -97,13 +98,16 @@ public class Studio7Application {
 		};
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**");
-			}
-		};
+	@Configuration
+	public class CorsConfig implements WebMvcConfigurer {
+
+	    @Override
+	    public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+		    .allowedOrigins("*") // or specify a specific origin
+		    .allowedMethods("GET", "POST", "PUT", "DELETE")
+		    .allowedHeaders("*")
+		    .allowCredentials(true);
+	    }
 	}
 }
