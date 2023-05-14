@@ -17,7 +17,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the JAR file from the build stage
-COPY --from=build /app/target/your-application.jar .
+COPY --from=build /app/target/app.jar .
 
 # Set the entry point to run the JAR file
 CMD ["java", "-jar", "app.jar"]
