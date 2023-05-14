@@ -12,7 +12,7 @@ export class RatingService {
   private ratingsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.ratingsUrl = 'http://65.1.105.69:8080/ratings';
+    this.ratingsUrl = 'https://s7backend.onrender.com/ratings';
   }
 
 
