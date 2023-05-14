@@ -17,12 +17,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the JAR file from the build stage
-COPY --from=build /app/target/app.jar .
+COPY --from=build /app/target/Studio7-0.0.1-SNAPSHOT.jar .
 
 # Set the entry point to run the JAR file
-CMD ["java", "-jar", "app.jar"]
-
-
-# ARG JAR_FILE=target/*.jar
-# COPY ${JAR_FILE} app.jar
-# ENTRYPOINT ["java","-jar","/app.jar"]
+CMD ["java", "-jar", "Studio7-0.0.1-SNAPSHOT.jar"]
