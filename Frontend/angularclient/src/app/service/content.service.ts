@@ -9,7 +9,7 @@ export class ContentService {
   private contentsUrl: string;
 
   constructor(private http: HttpClient) {
-    this.contentsUrl = 'http://65.1.105.69:8080/contents';
+    this.contentsUrl = 'https://s7backend.onrender.com/contents';
   }
 
   public findAll(): Observable<Content[]> {
