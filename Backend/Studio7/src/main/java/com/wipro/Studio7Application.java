@@ -106,8 +106,7 @@ public class Studio7Application {
 		registry.addMapping("/**")
 		    .allowedOrigins("*") // or specify a specific origin
 		    .allowedMethods("GET", "POST", "PUT", "DELETE")
-		    .allowedHeaders("*")
-		    .allowCredentials(true);
+		    .allowedHeaders("*");
 	    }
 	}
 }
